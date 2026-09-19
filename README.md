@@ -1,5 +1,5 @@
 # Echohearts
-My web page For Echo_kin
+My web page For Eco_kin
 <!DOCTYPE html>
 <html lang="en">
 <head>
