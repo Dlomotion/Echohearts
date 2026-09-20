@@ -33,6 +33,17 @@ jobs:
       - name: Run CTest
         run: ctest --test-dir build --output-on-failure
 
+      - name: Configure AddressSanitizer build
+        run: cmake -S cpp -B build-asan -G Ninja -DCMAKE_BUILD_TYPE=Debug -DECHOHEARTS_ENABLE_ASAN=ON
+
+      - name: Build with AddressSanitizer
+        run: cmake --build build-asan --parallel
+
+      - name: Run CTest with AddressSanitizer
+        env:
+          ASAN_OPTIONS: detect_leaks=1:halt_on_error=1
+        run: ctest --test-dir build-asan --output-on-failure
+
       - name: Static analysis
         run: cppcheck --enable=warning,performance,portability --error-exitcode=1 --std=c++17 --suppress=missingIncludeSystem cpp
 
