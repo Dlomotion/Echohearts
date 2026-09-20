@@ -1,0 +1,57 @@
+name: C++ Source and Database Verify
+
+on:
+  pull_request:
+    paths:
+      - 'cpp/**'
+      - '.github/workflows/cpp-verify.yml'
+      - 'README.md'
+  push:
+    paths:
+      - 'cpp/**'
+      - '.github/workflows/cpp-verify.yml'
+      - 'README.md'
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install verification tools
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y cmake ninja-build g++ libsqlite3-dev sqlite3 cppcheck
+
+      - name: Configure
+        run: cmake -S cpp -B build -G Ninja -DCMAKE_BUILD_TYPE=Release
+
+      - name: Build with warnings as errors
+        run: cmake --build build --parallel
+
+      - name: Run CTest
+        run: ctest --test-dir build --output-on-failure
+
+      - name: Static analysis
+        run: cppcheck --enable=warning,performance,portability --error-exitcode=1 --std=c++17 --suppress=missingIncludeSystem cpp
+
+      - name: Create valid verification database
+        run: |
+          sqlite3 build/echohearts-test.db < cpp/database/schema.sql
+          sqlite3 build/echohearts-test.db "PRAGMA foreign_keys=ON; INSERT INTO players(player_id,display_name,created_utc) VALUES('p1','Verifier',1); INSERT INTO inventory(player_id,item_id,quantity) VALUES('p1','PurityResin',10);"
+
+      - name: Verify database at levels 1, 5, and 10
+        run: |
+          ./build/echo_verify --database build/echohearts-test.db --level 1
+          ./build/echo_verify --database build/echohearts-test.db --level 5
+          ./build/echo_verify --database build/echohearts-test.db --level 10
+
+      - name: Prove foreign-key corruption is detected
+        run: |
+          sqlite3 build/broken.db < cpp/database/schema.sql
+          sqlite3 build/broken.db "PRAGMA foreign_keys=OFF; INSERT INTO inventory(player_id,item_id,quantity) VALUES('missing-player','PurityResin',1);"
+          if ./build/echo_verify --database build/broken.db --level 5; then
+            echo 'Expected verifier to reject broken foreign keys.'
+            exit 1
+          fi
