@@ -154,3 +154,11 @@ Study these only as technical learning/benchmark inputs; repository contracts an
 
 Do not copy tutorial/demo architecture blindly into Unreal production. Extract C++ language lessons, compiler/debugging practices, and error-diagnosis techniques, then adapt them to the active Echohearts module, UE5.8 build pipeline, tests, and verification boundary.
 
+
+
+## TypeScript repair directive
+Use **TypeScript** as the preferred cross-repository diagnostic, validation, schema, migration-planning, CI-support, and safe repair-orchestration language for Echohearts. Inspect the owning repository, call sites, config, and contracts before fixing. Prefer deterministic CI checks.
+
+TypeScript should detect and help repair broken/missing references, malformed JSON/YAML/config, schema/stable-ID drift, duplicate contracts, cross-repository divergence, invalid web/tooling types, stale paths, unsafe automation assumptions, canon terminology violations, and missing validation. Safe automatic fixes require dry-run support and tests. For Unreal C++/Blueprint/assets, TypeScript may diagnose and generate bounded migration inputs, but must not claim Unreal compile/runtime verification.
+
+Use the **Echohearts Repo Doctor** in `Dlomotion/Echohearts-Rebearth/tools/repo-doctor` (PR #27 until merged) as the shared diagnostic contract instead of creating unrelated validators. A repair is VERIFIED only with evidence appropriate to its language/runtime. Never translate authoritative C++ gameplay into TypeScript merely to hide an error.
