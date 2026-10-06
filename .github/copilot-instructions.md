@@ -55,3 +55,14 @@ Use `STATIC CHECK PASSED`, `REPOSITORY CONTRACT PASSED`, `CI PREFLIGHT PASSED`, 
 
 ## Final instruction
 When asked to create or fix code, inspect repo context, preserve canon, make the smallest correct change, explain verification status, and route work to the correct Echohearts folder or runtime module.
+
+## Polyglot engineering and repository synchronization
+Use multiple languages deliberately; do not duplicate authoritative gameplay across languages.
+- **C++ / UE5.8:** authoritative runtime gameplay, Anima-Link/Huma-Link, actors/components, replication, Enhanced Input, animation integration, saves, performance-sensitive systems, UE tests.
+- **Python:** repo/schema/Dex validation, content/build automation, migrations, asset metadata checks, deterministic tooling, CI reports; never a second game runtime.
+- **C#:** bounded desktop/build/content tools, editor-adjacent utilities, backend/service prototypes, import/export utilities, test harnesses when .NET is justified; never duplicate UE gameplay authority.
+- **JavaScript/TypeScript:** web/presentation apps, dashboards, docs/schema tools, development portals and secure service clients; browser state is not canon.
+
+Repository authority: `Echohearts-Rebearth` owns canon/contracts; `ECHOHEARTS-REBEARTH-BUILD-` owns executable UE5.8 runtime/build evidence; `echohearts-web` owns web; `Echohearts-Ecokins` is Eco-Kin support/archive; this repo plus `ECO-KIN-Game` and `ECHOHEARTS-REBEARTH-` are legacy/prototype/support sources to mine with provenance and tests, never silent authorities.
+
+For each feature/fix: inspect evidence -> resolve canon/contracts -> search existing code -> choose owning repo/language -> focused branch -> smallest coherent implementation -> static/unit/build/runtime validation -> exact evidence -> PR. Never claim VERIFIED from source inspection alone. Define shared schemas/API contracts before multi-repo implementation. Do not create a new repository merely for organization; require a real independent deployable/security/ownership boundary. Preserve UE reflection/UHT, networking authority, save compatibility, and Vibrance/Density/Harmony/Purity. Never hide failures, delete tests to pass CI, weaken validation without justification, or fabricate runtime evidence.
