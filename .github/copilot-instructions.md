@@ -4,7 +4,8 @@
 - Repository: `Dlomotion/Echohearts`
 - Role: `LEGACY_CORE_SUPPORT`
 - Supporting/legacy Echohearts repository. Reconcile useful code/data toward the primary production repository and preserve provenance; do not create a competing source of truth.
-- Canon/contracts/Dex authority: **Dlomotion/Echohearts-Rebearth**\n- Executable UE5.8 runtime/build/evidence authority: **Dlomotion/ECHOHEARTS-REBEARTH-BUILD-**
+- Canon/contracts/Dex authority: **Dlomotion/Echohearts-Rebearth**
+- Executable UE5.8 runtime/build/evidence authority: **Dlomotion/ECHOHEARTS-REBEARTH-BUILD-**
 - Related repositories:
   - `Dlomotion/echohearts-web`
   - `Dlomotion/Echohearts-Ecokins`
