@@ -1,2 +1,2 @@
-Name,DexID,Status,Vibrance,Density,Harmony,Purity,CanonicalDisposition,SourceRow,ProposedVibrance,ProposedDensity,ProposedHarmony,ProposedPurity,ProposalGate
-Core Sample,DEX-001,LOCKED CANON,60,50,70,40,LOCKED CORE IDENTITY; STAT TUNING PENDING,12,,,,,
+Name,DexID,Status,Vibrance,Density,Harmony,Purity,SourceRow,ReviewFlags,SuggestedMergeTarget,FormBaseCandidate,CanonicalDisposition,IDStatus,ProposedVibrance,ProposedDensity,ProposedHarmony,ProposedPurity,ProposalDelta,ProposalGate
+Core Sample,DEX-001,LOCKED CANON,60,50,70,40,12,,,,LOCKED CORE IDENTITY; STAT TUNING PENDING,PROTECTED SLOT PRESENT; IDENTITY APPROVAL NOT INFERRED,60,50,70,40,0,NO NUMERIC CHANGE PROPOSED

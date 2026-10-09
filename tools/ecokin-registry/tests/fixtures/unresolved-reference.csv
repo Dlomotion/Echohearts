@@ -1,2 +1,2 @@
 Name,DexID,Status,Vibrance,Density,Harmony,Purity,SourceRow,ReviewFlags,SuggestedMergeTarget,FormBaseCandidate,CanonicalDisposition,IDStatus,ProposedVibrance,ProposedDensity,ProposedHarmony,ProposedPurity,ProposalDelta,ProposalGate
-"Comma, Name",DEX-005,PENDING REVIEW,60,50,70,40,22,,,,CORE SLOT; PENDING REVIEW,PROTECTED SLOT PRESENT; IDENTITY APPROVAL NOT INFERRED,60,50,70,40,0,NO NUMERIC CHANGE PROPOSED
+Candidate Form,,PENDING REVIEW,50,50,50,50,45,,Missing Canon Name,,INTAKE; CANON PROMOTION REQUIRED,NO PRODUCTION ID — DO NOT ASSIGN,50,50,50,50,0,NO NUMERIC CHANGE PROPOSED

@@ -1,2 +1,2 @@
-Name,DexID,Status,Strength,Density,Harmony,Purity,CanonicalDisposition,SourceRow,ProposedVibrance,ProposedDensity,ProposedHarmony,ProposedPurity,ProposalGate
-Wrong Attribute,DEX-006,PENDING REVIEW,60,50,70,40,CORE SLOT; PENDING REVIEW,24,,,,,
+Name,DexID,Status,Strength,Density,Harmony,Purity,SourceRow,ReviewFlags,SuggestedMergeTarget,FormBaseCandidate,CanonicalDisposition,IDStatus,ProposedVibrance,ProposedDensity,ProposedHarmony,ProposedPurity,ProposalDelta,ProposalGate
+Wrong Attribute,DEX-006,PENDING REVIEW,60,50,70,40,24,,,,CORE SLOT; PENDING REVIEW,PROTECTED SLOT PRESENT; IDENTITY APPROVAL NOT INFERRED,60,50,70,40,0,NO NUMERIC CHANGE PROPOSED

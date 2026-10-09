@@ -1,2 +1,2 @@
-Name,DexID,Status,Vibrance,Density,Harmony,Purity,CanonicalDisposition,SourceRow,ProposedVibrance,ProposedDensity,ProposedHarmony,ProposedPurity,ProposalGate
-Out Of Range,DEX-002,PENDING REVIEW,101,50,70,40,CORE SLOT; PENDING REVIEW,14,,,,,
+Name,DexID,Status,Vibrance,Density,Harmony,Purity,SourceRow,ReviewFlags,SuggestedMergeTarget,FormBaseCandidate,CanonicalDisposition,IDStatus,ProposedVibrance,ProposedDensity,ProposedHarmony,ProposedPurity,ProposalDelta,ProposalGate
+Out Of Range,DEX-002,PENDING REVIEW,101,50,70,40,14,,,,CORE SLOT; PENDING REVIEW,PROTECTED SLOT PRESENT; IDENTITY APPROVAL NOT INFERRED,101,50,70,40,0,NO NUMERIC CHANGE PROPOSED

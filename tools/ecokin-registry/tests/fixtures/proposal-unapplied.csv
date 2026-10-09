@@ -1,2 +1,2 @@
-Name,DexID,Status,Vibrance,Density,Harmony,Purity,CanonicalDisposition,SourceRow,ProposedVibrance,ProposedDensity,ProposedHarmony,ProposedPurity,ProposalGate
-Draft Sample,,PENDING REVIEW,64,73,100,50,INTAKE; CANON PROMOTION REQUIRED,527,64,73,95,50,DRAFT CAP SUGGESTION; NOT APPROVED
+Name,DexID,Status,Vibrance,Density,Harmony,Purity,SourceRow,ReviewFlags,SuggestedMergeTarget,FormBaseCandidate,CanonicalDisposition,IDStatus,ProposedVibrance,ProposedDensity,ProposedHarmony,ProposedPurity,ProposalDelta,ProposalGate
+Draft Sample,,PENDING REVIEW,64,73,100,50,527,,,,INTAKE; CANON PROMOTION REQUIRED,NO PRODUCTION ID — DO NOT ASSIGN,64,73,95,50,-5,DRAFT CAP SUGGESTION; NOT APPROVED

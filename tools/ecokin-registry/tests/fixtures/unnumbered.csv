@@ -1,2 +1,2 @@
-Name,DexID,Status,Vibrance,Density,Harmony,Purity,CanonicalDisposition,SourceRow,ProposedVibrance,ProposedDensity,ProposedHarmony,ProposedPurity,ProposalGate
-Intake Only,,PENDING REVIEW,10,20,30,40,INTAKE; CANON PROMOTION REQUIRED,501,,,,,
+Name,DexID,Status,Vibrance,Density,Harmony,Purity,SourceRow,ReviewFlags,SuggestedMergeTarget,FormBaseCandidate,CanonicalDisposition,IDStatus,ProposedVibrance,ProposedDensity,ProposedHarmony,ProposedPurity,ProposalDelta,ProposalGate
+Intake Only,,PENDING REVIEW,10,20,30,40,501,,,,INTAKE; CANON PROMOTION REQUIRED,NO PRODUCTION ID — DO NOT ASSIGN,10,20,30,40,0,NO NUMERIC CHANGE PROPOSED

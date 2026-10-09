@@ -1,6 +1,7 @@
+---
 name: Eco-Kin registry optional-language QA
 
-on:
+'on':
   pull_request:
     paths:
       - "tools/ecokin-registry/**"
@@ -30,14 +31,19 @@ jobs:
           sudo apt-get install -y --no-install-recommends gnucobol
       - name: Compile and verify COBOL auditor
         run: |
-          cobc -x -free -o /tmp/ecokin-registry-audit tools/ecokin-registry/cobol/ecokin-registry-audit.cbl
-          python3 tools/ecokin-registry/tests/verify.py --program /tmp/ecokin-registry-audit
+          cobc -x -free -o /tmp/ecokin-registry-audit \
+            tools/ecokin-registry/cobol/ecokin-registry-audit.cbl
+          python3 tools/ecokin-registry/tests/verify.py \
+            --program /tmp/ecokin-registry-audit
       - name: Verify FreeBASIC auditor when compiler is available
         shell: bash
         run: |
           if command -v fbc >/dev/null 2>&1; then
-            fbc tools/ecokin-registry/basic/ecokin-registry-stats.bas -x /tmp/ecokin-registry-stats
-            python3 tools/ecokin-registry/tests/verify.py --program /tmp/ecokin-registry-stats
+            fbc tools/ecokin-registry/basic/ecokin-registry-stats.bas \
+              -x /tmp/ecokin-registry-stats
+            python3 tools/ecokin-registry/tests/verify.py \
+              --program /tmp/ecokin-registry-stats
           else
-            echo "FreeBASIC compilation NOT VERIFIED: fbc is not installed on this runner."
+            echo "FreeBASIC compilation NOT VERIFIED:"
+            echo "fbc is not installed on this runner."
           fi
