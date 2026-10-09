@@ -407,3 +407,32 @@ Expected Win64 build evidence:
 Current merged BUILD tooling baseline: `Dlomotion/ECHOHEARTS-REBEARTH-BUILD-` commit `2f7ef6fe41c4a212bed080d1f2ce5816b6ec0443`.
 
 Do not claim editor launch, PIE, packaged launch, gameplay, save/networking, AI, performance, or platform verification from binary presence alone.
+
+## Create-and-repair execution directive — 2026-10-09
+
+When the user asks Copilot to create, implement, expand, connect, repair, or perfect Echohearts work, perform the repository work this supporting C++/verification repository owns instead of stopping at generic advice or disconnected snippets.
+
+Execution rules:
+- inspect source, tests, schemas, CMake/tooling, call sites, workflows, and diagnostics before editing;
+- preserve the authority split: canon/contracts in `Dlomotion/Echohearts-Rebearth`, executable UE5.8 runtime/build/evidence in `Dlomotion/ECHOHEARTS-REBEARTH-BUILD-`;
+- fix root causes and keep engine-independent verification logic synchronized with the canonical contracts;
+- do not promote support-code success into a UE5.8 runtime claim.
+
+### Current in-game presentation continuity
+BUILD PR #37 is the current native Echohearts front-end/title-screen implementation candidate. Supporting utilities or validation generated here must feed that runtime path through explicit contracts rather than create a second front-end implementation.
+
+### COBOL and BASIC implementation lane
+COBOL and BASIC are approved secondary engineering/tooling languages when explicitly requested or when a bounded offline utility genuinely benefits from them.
+
+Approved scopes include deterministic data conversion, report generation, Dex/manifest/schema validation, migration utilities, regression fixtures, and contained command-line support tools.
+
+Prefer GnuCOBOL for `.cob` / `.cbl` and FreeBASIC for `.bas` when available.
+
+Boundaries:
+- this repo may host isolated COBOL/BASIC verification utilities, but they do not become UE runtime authority;
+- outputs consumed by other Echohearts repositories must use explicit validated file/data contracts;
+- do not use COBOL/BASIC to work around unrelated C++/CMake/database failures;
+- if the compiler is unavailable, report STATIC/NOT EXECUTED rather than claiming a pass.
+
+Canonical contract: `Dlomotion/Echohearts-Rebearth/09_Technical/LANGUAGE_DIAGNOSTIC_AND_TOOL_SELECTION_STANDARD_2026-10-06.md`.
+
