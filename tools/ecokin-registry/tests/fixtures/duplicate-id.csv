@@ -1,0 +1,3 @@
+Name,DexID,Status,Vibrance,Density,Harmony,Purity,CanonicalDisposition,SourceRow,ProposedVibrance,ProposedDensity,ProposedHarmony,ProposedPurity,ProposalGate
+First Sample,DEX-001,PENDING REVIEW,60,50,70,40,CORE SLOT; PENDING REVIEW,12,,,,,
+Second Sample,DEX-001,PENDING REVIEW,55,45,65,35,CORE SLOT; PENDING REVIEW,13,,,,,

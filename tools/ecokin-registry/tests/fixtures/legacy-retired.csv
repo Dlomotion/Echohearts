@@ -1,0 +1,3 @@
+Name,DexID,Status,Vibrance,Density,Harmony,Purity,CanonicalDisposition,SourceRow,ProposedVibrance,ProposedDensity,ProposedHarmony,ProposedPurity,ProposalGate
+Historical Sample,DEX-112,LEGACY-HISTORICAL,47,54,69,80,ARCHIVE; DO NOT SHIP,513,,,,,
+Retired Sample,,RETIRED,40,50,60,70,ARCHIVE; DO NOT SHIP,514,,,,,
