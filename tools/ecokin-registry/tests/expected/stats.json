@@ -1,0 +1,33 @@
+{
+  "duplicate-id.csv": [
+    "ORIGINAL_STATS_1=60,50,70,40", "PROPOSED_STATS_1=,,,",
+    "ORIGINAL_STATS_2=55,45,65,35", "PROPOSED_STATS_2=,,,"
+  ],
+  "duplicate-name.csv": [
+    "ORIGINAL_STATS_1=60,50,70,40", "PROPOSED_STATS_1=,,,",
+    "ORIGINAL_STATS_2=61,51,71,41", "PROPOSED_STATS_2=,,,"
+  ],
+  "invalid-attribute.csv": [
+    "ORIGINAL_STATS_1=101,50,70,40", "PROPOSED_STATS_1=,,,"
+  ],
+  "invalid-id.csv": [
+    "ORIGINAL_STATS_1=60,50,70,40", "PROPOSED_STATS_1=,,,"
+  ],
+  "invalid-schema.csv": [
+    "ORIGINAL_STATS_1=60,50,70,40", "PROPOSED_STATS_1=,,,"
+  ],
+  "legacy-retired.csv": [
+    "ORIGINAL_STATS_1=47,54,69,80", "PROPOSED_STATS_1=,,,",
+    "ORIGINAL_STATS_2=40,50,60,70", "PROPOSED_STATS_2=,,,"
+  ],
+  "proposal-unapplied.csv": [
+    "ORIGINAL_STATS_1=64,73,100,50", "PROPOSED_STATS_1=64,73,95,50"
+  ],
+  "quoted-comma.csv": [],
+  "unnumbered.csv": [
+    "ORIGINAL_STATS_1=10,20,30,40", "PROPOSED_STATS_1=,,,"
+  ],
+  "valid.csv": [
+    "ORIGINAL_STATS_1=60,50,70,40", "PROPOSED_STATS_1=,,,"
+  ]
+}

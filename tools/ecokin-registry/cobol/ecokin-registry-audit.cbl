@@ -38,6 +38,8 @@ working-storage section.
 01 parsed-field-count pic 9(4) value 0.
 01 field-table.
    05 field-value pic x(256) occurs 14 times.
+01 stat-report-table.
+   05 stat-report pic x(16) occurs 14 times.
 01 seen-table.
    05 seen-entry occurs 1000 times.
       10 seen-name pic x(256).
@@ -53,6 +55,7 @@ working-storage section.
 01 valid-id pic 9 value 0.
 01 valid-stat pic 9 value 0.
 01 stat-index pic 9(4) value 0.
+01 stat-length pic 9(4) value 0.
 01 proposal-count pic 9(4) value 0.
 01 proposal-changed pic 9 value 0.
 01 numeric-stat pic 9(3) value 0.
@@ -76,6 +79,7 @@ working-storage section.
 01 csv-errors-text pic z(7)9.
 01 schema-errors-text pic z(7)9.
 01 errors-text pic z(7)9.
+01 row-number-text pic z(7)9.
 
 procedure division.
 main.
@@ -126,6 +130,7 @@ main.
 
 process-record.
     initialize field-table
+    initialize stat-report-table
     move 1 to field-index
     move 0 to field-offset quote-found malformed-row
     compute record-length =
@@ -199,6 +204,7 @@ validate-header.
     end-if.
 
 validate-data-row.
+    initialize stat-report-table
     move function upper-case(function trim(field-value(1)))
         to current-name
     move function trim(field-value(2)) to current-id
@@ -268,6 +274,17 @@ validate-data-row.
             end-if
         end-if
     end-perform
+    move row-count to row-number-text
+    display "ORIGINAL_STATS_" function trim(row-number-text) "="
+        function trim(stat-report(4)) ","
+        function trim(stat-report(5)) ","
+        function trim(stat-report(6)) ","
+        function trim(stat-report(7))
+    display "PROPOSED_STATS_" function trim(row-number-text) "="
+        function trim(stat-report(10)) ","
+        function trim(stat-report(11)) ","
+        function trim(stat-report(12)) ","
+        function trim(stat-report(13))
     if proposal-count not = 0 and proposal-count not = 4
         add 1 to schema-errors
     end-if
@@ -314,17 +331,29 @@ validate-id.
 
 validate-stat.
     move function trim(field-value(stat-index)) to stat-text
-    if stat-text = spaces
-        add 1 to invalid-attributes
+    move function length(function trim(field-value(stat-index)))
+        to stat-length
+    move 1 to valid-stat
+    if stat-length < 1 or stat-length > 3
+        move 0 to valid-stat
     else
-        if function length(function trim(field-value(stat-index))) > 3
-            or function test-numval(stat-text) not = 0
-            add 1 to invalid-attributes
-        else
-            compute numeric-stat = function numval(stat-text)
-            if numeric-stat < 0 or numeric-stat > 100
-                add 1 to invalid-attributes
+        perform varying char-index from 1 by 1
+            until char-index > stat-length
+            if stat-text(char-index:1) < "0"
+                or stat-text(char-index:1) > "9"
+                move 0 to valid-stat
             end-if
+        end-perform
+    end-if
+
+    if valid-stat = 0
+        add 1 to invalid-attributes
+        move "INVALID" to stat-report(stat-index)
+    else
+        move stat-text to stat-report(stat-index)
+        compute numeric-stat = function numval(stat-text)
+        if numeric-stat > 100
+            add 1 to invalid-attributes
         end-if
     end-if.
 

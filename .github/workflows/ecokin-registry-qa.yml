@@ -1,0 +1,43 @@
+name: Eco-Kin registry optional-language QA
+
+on:
+  pull_request:
+    paths:
+      - "tools/ecokin-registry/**"
+      - ".github/workflows/ecokin-registry-qa.yml"
+  push:
+    branches: [main]
+    paths:
+      - "tools/ecokin-registry/**"
+      - ".github/workflows/ecokin-registry-qa.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  registry-qa:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Check shared golden fixtures
+        run: python3 tools/ecokin-registry/tests/verify.py
+      - name: Install GnuCOBOL
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y --no-install-recommends gnucobol
+      - name: Compile and verify COBOL auditor
+        run: |
+          cobc -x -free -o /tmp/ecokin-registry-audit tools/ecokin-registry/cobol/ecokin-registry-audit.cbl
+          python3 tools/ecokin-registry/tests/verify.py --program /tmp/ecokin-registry-audit
+      - name: Verify FreeBASIC auditor when compiler is available
+        shell: bash
+        run: |
+          if command -v fbc >/dev/null 2>&1; then
+            fbc tools/ecokin-registry/basic/ecokin-registry-stats.bas -x /tmp/ecokin-registry-stats
+            python3 tools/ecokin-registry/tests/verify.py --program /tmp/ecokin-registry-stats
+          else
+            echo "FreeBASIC compilation NOT VERIFIED: fbc is not installed on this runner."
+          fi

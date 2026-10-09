@@ -35,6 +35,9 @@ Both programs emit the same deterministic `key=value` report and return 1 for
 CSV, schema, or identity errors, 0 for an accepted intake (warnings do not
 change the source), and 2 for usage or file-open errors. `PROPOSED_UNAPPLIED`
 counts rows where proposed values differ from the original values.
+Each accepted-shape input row also emits separate `ORIGINAL_STATS_n` and
+`PROPOSED_STATS_n` lines in source order. Empty proposal cells stay empty; a
+draft value is never substituted into the original-stat line.
 
 The expected reports in `tests/expected/` are the shared domain-contract
 fixtures for the standalone C++ registry validator tracked separately in issue

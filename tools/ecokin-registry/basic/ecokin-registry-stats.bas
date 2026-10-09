@@ -1,6 +1,17 @@
 ' Read-only Eco-Kin registry audit for the ecokin-registry-v1 CSV contract.
 ' Proposals are reported, never applied; this is not a canon approval tool.
 
+Function SafeStat(ByVal rawValue As String) As String
+    rawValue = Trim(rawValue)
+    If Len(rawValue) = 0 Then Return ""
+    If Len(rawValue) > 3 Then Return "INVALID"
+    For safeIndex As Integer = 1 To Len(rawValue)
+        If Mid(rawValue, safeIndex, 1) < "0" Or _
+           Mid(rawValue, safeIndex, 1) > "9" Then Return "INVALID"
+    Next
+    Return rawValue
+End Function
+
 Const MAX_ROWS As Integer = 1000
 Const MAX_FIELDS As Integer = 14
 
@@ -11,11 +22,13 @@ If Len(Trim(inputPath)) = 0 Then
 End If
 
 Dim fileNum As Integer = FreeFile()
+On Error Resume Next
 Open inputPath For Input As #fileNum
 If Err <> 0 Then
     Print "ERROR: cannot read registry CSV"
     End 2
 End If
+On Error Goto 0
 
 Dim As String fields(1 To MAX_FIELDS)
 Dim As String seenNames(1 To MAX_ROWS)
@@ -93,6 +106,13 @@ While Not Eof(fileNum)
         If rows > MAX_ROWS Then
             schemaErrors += 1
         Else
+            Print "ORIGINAL_STATS_" & Trim(Str(rows)) & "=" & _
+                SafeStat(fields(4)) & "," & SafeStat(fields(5)) & "," & _
+                SafeStat(fields(6)) & "," & SafeStat(fields(7))
+            Print "PROPOSED_STATS_" & Trim(Str(rows)) & "=" & _
+                SafeStat(fields(10)) & "," & SafeStat(fields(11)) & "," & _
+                SafeStat(fields(12)) & "," & SafeStat(fields(13))
+
             currentName = UCase(Trim(fields(1)))
             currentId = Trim(fields(2))
             statusText = Trim(fields(3))
