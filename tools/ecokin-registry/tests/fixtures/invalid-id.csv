@@ -1,0 +1,2 @@
+Name,DexID,Status,Vibrance,Density,Harmony,Purity,SourceRow,ReviewFlags,SuggestedMergeTarget,FormBaseCandidate,CanonicalDisposition,IDStatus,ProposedVibrance,ProposedDensity,ProposedHarmony,ProposedPurity,ProposalDelta,ProposalGate
+Outside Dex Range,DEX-126,PENDING REVIEW,60,50,70,40,23,,,,CORE SLOT; PENDING REVIEW,PROTECTED SLOT PRESENT; IDENTITY APPROVAL NOT INFERRED,60,50,70,40,0,NO NUMERIC CHANGE PROPOSED
