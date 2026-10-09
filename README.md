@@ -24,6 +24,16 @@ cmake --build build --parallel
 ctest --test-dir build --output-on-failure
 ```
 
+## Validate a proposed Eco-Kin intake
+
+The standalone validator consumes the corrected registry CSV without copying it into this repository or promoting any entry:
+
+```bash
+./build/echo_ecokin_intake_verify path/to/echohearts-ecokin-master-registry-CORRECTED.csv
+```
+
+It checks the 554-row intake shape, protected `DEX-001`–`DEX-125` IDs, 429 unnumbered candidates, attribute bounds, review/provenance references, and the 23 unapproved stat proposals. Original and proposed attributes remain separate; successful validation is not canonical approval or UE5.8 runtime evidence.
+
 ## Verify a SQLite database
 
 ```bash

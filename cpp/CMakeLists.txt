@@ -19,12 +19,20 @@ target_link_libraries(meta_systems_verify PRIVATE echohearts_meta)
 add_executable(object_pool_verify tests/ObjectPoolVerification.cpp)
 target_link_libraries(object_pool_verify PRIVATE echohearts_meta)
 
+add_executable(ecokin_intake_verify tests/EcoKinIntakeVerification.cpp)
+target_link_libraries(ecokin_intake_verify PRIVATE echohearts_meta)
+
+add_executable(echo_ecokin_intake_verify tools/EcoKinIntakeVerify.cpp)
+target_link_libraries(echo_ecokin_intake_verify PRIVATE echohearts_meta)
+
 add_executable(echo_verify tools/EchoheartsRepoVerify.cpp)
 target_link_libraries(echo_verify PRIVATE SQLite::SQLite3)
 
 set(ECHOHEARTS_VERIFICATION_TARGETS
     meta_systems_verify
     object_pool_verify
+    ecokin_intake_verify
+    echo_ecokin_intake_verify
     echo_verify)
 
 if(MSVC)
@@ -56,3 +64,4 @@ endif()
 enable_testing()
 add_test(NAME EchoheartsMetaSystemsVerification COMMAND meta_systems_verify)
 add_test(NAME EchoheartsObjectPoolVerification COMMAND object_pool_verify)
+add_test(NAME EchoheartsEcoKinIntakeVerification COMMAND ecokin_intake_verify)
