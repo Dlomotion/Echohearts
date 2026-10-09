@@ -7,8 +7,6 @@
 #include <cstddef>
 #include <istream>
 #include <map>
-#include <set>
-#include <sstream>
 #include <stdexcept>
 #include <string>
 #include <unordered_map>
@@ -249,6 +247,12 @@ inline ValidationReport Validate(
         "PENDING REVIEW", "PERMANENT DEX", "MERGE-DUPLICATE", "LEGACY-HISTORICAL",
         "RETIRED", "RENAME REQUIRED", "LOCKED CANON"
     };
+    const std::unordered_set<std::string> knownDispositions = {
+        "INTAKE; CANON PROMOTION REQUIRED", "CORE SLOT; PENDING REVIEW",
+        "CORE SLOT; EXISTING PERMANENT LABEL", "ARCHIVE; DO NOT SHIP",
+        "INTAKE; RENAME REVIEW", "CORE SLOT; HISTORICAL STATUS CONFLICT",
+        "LOCKED CORE IDENTITY; STAT TUNING PENDING"
+    };
 
     ValidationReport report;
     report.recordCount = records.size();
@@ -279,8 +283,8 @@ inline ValidationReport Validate(
         if (!sourceRows.insert(record.sourceRow).second || record.sourceRow <= 0) {
             issue(record, "SourceRow must be a unique positive provenance reference");
         }
-        if (record.canonicalDisposition.empty()) {
-            issue(record, "CanonicalDisposition is required");
+        if (knownDispositions.find(record.canonicalDisposition) == knownDispositions.end()) {
+            issue(record, "unknown or missing CanonicalDisposition: " + record.canonicalDisposition);
         }
         if (record.reviewFlags.empty() &&
             (record.status == "MERGE-DUPLICATE" || record.status == "RENAME REQUIRED")) {
@@ -288,6 +292,9 @@ inline ValidationReport Validate(
         }
 
         const bool numbered = !record.dexId.empty();
+        if ((record.status == "PERMANENT DEX" || record.status == "LOCKED CANON") && !numbered) {
+            issue(record, "permanent and locked entries must retain a protected DexID");
+        }
         if (numbered) {
             ++report.protectedIdCount;
             if (record.dexId.size() != 7 || record.dexId.compare(0, 4, "DEX-") != 0 ||

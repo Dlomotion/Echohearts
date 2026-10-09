@@ -82,6 +82,12 @@ int main() {
         }
 
         {
+            auto records = ParseText(SmallIntake());
+            records[1].canonicalDisposition = "CANON APPROVED";
+            Require(!Validate(records).Ok(), "an unsupported canonical disposition was accepted");
+        }
+
+        {
             auto records = ParseText(
                 Header + Row("Candidate", "", "PENDING REVIEW", 54,
                              "NO PRODUCTION ID — DO NOT ASSIGN", {}, {}, {},
