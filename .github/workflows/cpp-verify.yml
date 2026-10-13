@@ -58,6 +58,21 @@ jobs:
           ./build/echo_verify --database build/echohearts-test.db --level 5
           ./build/echo_verify --database build/echohearts-test.db --level 10
 
+      - name: Reject malformed verifier arguments without crashing
+        run: |
+          if ./build/echo_verify --database build/echohearts-test.db --level nope; then
+            echo 'Expected malformed --level to fail.'
+            exit 1
+          fi
+          if ./build/echo_verify --database build/echohearts-test.db --level 11; then
+            echo 'Expected out-of-range --level to fail.'
+            exit 1
+          fi
+          if ./build/echo_verify --level 5; then
+            echo 'Expected missing --database to fail.'
+            exit 1
+          fi
+
       - name: Prove foreign-key corruption is detected
         run: |
           sqlite3 build/broken.db < cpp/database/schema.sql
