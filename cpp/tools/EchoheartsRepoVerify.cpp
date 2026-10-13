@@ -1,5 +1,6 @@
 #include <sqlite3.h>
 
+#include <charconv>
 #include <cstdlib>
 #include <iostream>
 #include <memory>
@@ -144,6 +145,23 @@ CheckResult CheckEveryTablePreparable(sqlite3* db) {
     return {true, "prepare scan: ok (" + std::to_string(tables.size()) + " user tables)"};
 }
 
+bool ParseLevel(const std::string& text, int& outLevel) noexcept {
+    if (text.empty()) {
+        return false;
+    }
+
+    int parsed = 0;
+    const char* const begin = text.data();
+    const char* const end = begin + text.size();
+    const auto result = std::from_chars(begin, end, parsed);
+    if (result.ec != std::errc{} || result.ptr != end) {
+        return false;
+    }
+
+    outLevel = parsed;
+    return true;
+}
+
 void PrintUsage() {
     std::cout
         << "Echohearts repository/database verifier\n\n"
@@ -179,7 +197,11 @@ int main(int argc, char** argv) {
             continue;
         }
         if (arg == "--level" && i + 1 < argc) {
-            level = std::stoi(argv[++i]);
+            const std::string levelText = argv[++i];
+            if (!ParseLevel(levelText, level)) {
+                std::cerr << "Invalid --level value: " << levelText << "\n";
+                return EXIT_FAILURE;
+            }
             continue;
         }
         std::cerr << "Unknown or incomplete argument: " << arg << "\n";
