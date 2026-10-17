@@ -1,0 +1,42 @@
+name: Echohearts optional COBOL and BASIC status audit
+on:
+  pull_request:
+    paths:
+      - 'tools/offline-qa/**'
+      - '.github/workflows/art-status-offline.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'tools/offline-qa/**'
+      - '.github/workflows/art-status-offline.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  standalone-status-audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Reference fixture contract (not compiled code)
+        run: python3 tools/offline-qa/verify_art_status.py
+      - name: Install GnuCOBOL compiler
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y --no-install-recommends gnucobol
+      - name: Compile standalone COBOL audit
+        run: cobc -x -free -o /tmp/echo_art_status tools/offline-qa/EchoArtStatus.cbl
+      - name: Execute COBOL valid and invalid fixtures
+        run: python3 tools/offline-qa/verify_art_status.py --program /tmp/echo_art_status
+      - name: Check optional FreeBASIC compiler if preinstalled
+        shell: bash
+        run: |
+          if command -v fbc >/dev/null 2>&1; then
+            fbc tools/offline-qa/EchoArtStatus.bas -x /tmp/echo_art_status_basic
+            python3 tools/offline-qa/verify_art_status.py --program /tmp/echo_art_status_basic
+          else
+            echo "FreeBASIC COMPILATION NOT VERIFIED: fbc not installed on runner."
+          fi
