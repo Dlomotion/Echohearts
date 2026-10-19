@@ -40,3 +40,31 @@ This section governs GitHub Copilot work related to public PR #14, public Issues
 - If retained after review, habitat morphology must use stable base identity plus an explicit mutually-exclusive morphology state, typed Essence/interaction references, Vibrance/Density/Harmony/Purity only, deterministic validation, versioned save migration, server authority, Anima-Link consequences, and reversible failure handling. Surface overlays must remain cosmetic unless an approved gameplay contract says otherwise.
 - Implementation order: approve the data contract/schema first; then validators and fixtures; then C++/DataAsset or DataTable integration; then versioned serialization; finally UE5.8 compile, Editor, PIE, networking, save/load/rollback, cook/package, and performance evidence.
 - COBOL and BASIC remain optional isolated legacy utilities for deterministic conversion, validation, or reporting with pinned compilers and tests. They must not own UE gameplay/runtime, Fab import, MetaHuman, rendering, replication, save, packaging, or web production responsibilities.
+
+## Create-and-repair execution directive — 2026-10-09
+
+When the user asks Copilot to create, implement, expand, connect, repair, or perfect Echohearts work, perform the repository work this supporting C++/verification repository owns instead of stopping at generic advice or disconnected snippets.
+
+Execution rules:
+- inspect source, tests, schemas, CMake/tooling, call sites, workflows, and diagnostics before editing;
+- preserve the authority split: canon/contracts in `Dlomotion/Echohearts-Rebearth`, executable UE5.8 runtime/build/evidence in `Dlomotion/ECHOHEARTS-REBEARTH-BUILD-`;
+- fix root causes and keep engine-independent verification logic synchronized with the canonical contracts;
+- do not promote support-code success into a UE5.8 runtime claim.
+
+### Current in-game presentation continuity
+BUILD PR #37 is a native Echohearts front-end/title-screen implementation candidate; re-read its current status and successor work before treating it as the active implementation. Supporting utilities or validation generated here must feed that runtime path through explicit contracts rather than create a second front-end implementation.
+
+### COBOL and BASIC implementation lane
+COBOL and BASIC are approved secondary engineering/tooling languages when explicitly requested or when a bounded offline utility genuinely benefits from them.
+
+Approved scopes include deterministic data conversion, report generation, Dex/manifest/schema validation, migration utilities, regression fixtures, and contained command-line support tools.
+
+Prefer GnuCOBOL for `.cob` / `.cbl` and FreeBASIC for `.bas` when available.
+
+Boundaries:
+- this repo may host isolated COBOL/BASIC verification utilities, but they do not become UE runtime authority;
+- outputs consumed by other Echohearts repositories must use explicit validated file/data contracts;
+- do not use COBOL/BASIC to work around unrelated C++/CMake/database failures;
+- if the compiler is unavailable, report STATIC/NOT EXECUTED rather than claiming a pass.
+
+Canonical contract: `Dlomotion/Echohearts-Rebearth/09_Technical/LANGUAGE_DIAGNOSTIC_AND_TOOL_SELECTION_STANDARD_2026-10-06.md`.
