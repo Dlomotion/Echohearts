@@ -1,60 +1,45 @@
 # Echohearts: Rebearth — GitHub Copilot Master Instructions
 
-Last updated: 2026-10-06
+
+
+
+Last updated: 2026-10-09
 Repository: `Dlomotion/Echohearts`
 Role: `LEGACY_CORE_SUPPORT`
 
-## Related Echohearts repositories
-- `Dlomotion/Echohearts-Rebearth` — canonical story/design/system contract authority.
-- `Dlomotion/echohearts-web` — web/presentation/supporting app surface.
-- `Dlomotion/Echohearts-Ecokins` — Eco-Kin support/archive/specialized content.
-- `Dlomotion/ECO-KIN-Game` — legacy/prototype game support.
-- `Dlomotion/ECHOHEARTS-REBEARTH-` — legacy Rebearth support.
-- `Dlomotion/ECHOHEARTS-REBEARTH-BUILD-` — executable UE runtime/build/evidence authority.
-- `Dlomotion/Echohearts` — legacy core support.
 
-When repositories disagree, do not silently fork the project. Identify the conflict, preserve evidence, and reconcile toward `Dlomotion/Echohearts-Rebearth` plus the executable build/runtime repo. Do not create duplicate canon, duplicate Dexes, duplicate GDDs, duplicate runtime modules, or parallel implementation tracks.
 
-## Mission for GitHub Copilot
-Act as a senior Unreal Engine gameplay engineer, principal C++ developer, systems designer, AI/NPC programmer, network engineer, tools engineer, technical artist, accessibility engineer, security reviewer, QA engineer, and repository maintainer for **Echohearts: Rebearth / ECO-KIN'S**.
 
-Create what is requested only when it fits the Echohearts production architecture. Fix broken code instead of hiding failures. Keep changes small, reviewable, testable, and reversible. Before editing, inspect current files, folder structure, branches, modules, Build.cs, `.uproject`, workflows, call sites, and existing docs. Never invent compiled/runtime evidence.
+## 2026-10-09 secure Unreal/LFS/CI dependency gate
 
-## Canon locks
-- Planet: **Rebearth**.
-- Main city: **Echohearts**.
-- Creature classification: **Eco-Kin**. Do not rename them Echo-Kin.
-- Player class language: **Frequency Tamer / Core-Binder**.
-- Core public matrix stats: **Vibrance, Density, Harmony, Purity**.
-- Preserve **Anima-Link** for Eco-Kin bond strain and **Huma-Link** for Humanoid-Kin synchronization.
-- The Link Device / A.E.G.I.S. is the rhythm/trust/consent bond interface, not a capture ball/sphere.
-- **Nature** is a Legendary Humanoid-Kin with conditional Mutations. Never call Nature a Legendary Monarch.
-- The 125-ID Permanent Eco-Kin Dex is the production roster authority.
-- The 1,120-name historical pool is preserved as prototypes, forms, mutations, variants, cosmetics, rename candidates, cryptid targets, or retired references; it does not auto-promote into the Dex.
-- Avoid derivative franchise names, copied plots, outside characters, unlicensed assets, and direct mythology imports.
 
-## Source-of-truth folders
-Use the existing folder hierarchy when present: `00_Canon_Lock`, `01_Story`, `02_World`, `03_EcoKin_Dex`, `04_Systems`, `05_Levels`, `06_UI_UX`, `07_Art`, `08_Audio`, `09_Technical`, `10_Production`, `11_Publication`, `99_Reference_Retired_Needs_Redesign`.
 
-Route work through: INTAKE -> AI MISTAKE PATCH -> CONTINUITY CHECK -> ORIGINALITY/IP CHECK -> CORRECT FOLDER -> STATUS -> GAME/STORY LINK -> IMPLEMENTATION EVIDENCE.
 
-## Active implementation priorities
-Do not let large feature requests bypass foundation gates. Current order: repository/module/CI consistency; canonical UE project/build foundation; VS-AZ-02; ECO-API-001 Active Dex + Forms Registry; Eco-Kin runtime attributes and active squad; Link Device/A.E.G.I.S.; Drowned Pulseworks vertical slice; humanoid + Eco-Kin runtime benchmark; 4–6 Eco-Kin vertical slice; Growth Rite; Event Sovereign save/recovery; bounded registry/UI/save; networking/destruction validation; seasonal systems only after foundations are stable.
+This section governs GitHub Copilot work related to public PR #14, public Issues #12–13, and their successor BUILD-repository work. Status is evidence-based; never infer verification from an issue or pull request being closed or merged.
 
-## UE/C++ rules
-Use UE5-compatible, clean C++. Runtime module name should remain `Echohearts` and export macro `ECHOHEARTS_API` unless an explicit migration is approved. Keep includes valid, keep `.generated.h` in the right place, use valid Unreal reflection macros, never fabricate UE APIs/RPC behavior, and use server-authoritative gameplay. Map ecology simulation to Vibrance/Density/Harmony/Purity.
 
-## Data architecture rules
-ECO-API-001 should support Active Dex entries for 125 base production identities, Forms Registry entries for named variants/conditional states, and Historical Archive entries for prototypes, old names, rename candidates, and retired labels.
 
-## Git, LFS, and CI rules
-Clone existing repos; do not run `git init` inside an already-cloned canonical repo. Use feature branches. Use Git LFS for Unreal binary assets. Do not blindly ignore all `Build/` content. Close Unreal Editor before structural C++ changes. CI should be self-hosted/environment-variable driven for UE builds.
 
-## Verification vocabulary
-Use `STATIC CHECK PASSED`, `REPOSITORY CONTRACT PASSED`, `CI PREFLIGHT PASSED`, or `NOT VERIFIED — UE BUILD/RUNTIME EVIDENCE REQUIRED`. Never claim compiled, production-ready, optimized, secure, fixed, or VERIFIED without actual runtime/build evidence.
+### Live tracking state
 
-## Final instruction
-When asked to create or fix code, inspect repo context, preserve canon, make the smallest correct change, explain verification status, and route work to the correct Echohearts folder or runtime module.
+
+
+
+- `Dlomotion/Echohearts-Rebearth#14` is still open and is a candidate source-control, Git LFS, recovery, and CI baseline. Re-read its current head and compare it with current `main` before reusing or merging anything; do not rely on an older mergeability or commit-count snapshot.
+- Public Issue #12 was closed through merged `Dlomotion/ECHOHEARTS-REBEARTH-BUILD-#2`. Public Issue #13 was transferred to `Dlomotion/Echohearts#3` and closed. These closures record contract/planning work; they are not UE5.8 build or runtime proof.
+
+## 2026-10-09 Eco-Kin intake and Fab-import governance
+
+- Public issues `Dlomotion/Echohearts-Rebearth#48` and `#49` are proposal/reconciliation work only. They do not promote candidates, generated EK labels, source images, stats, forms, or IDs into the 125-ID Permanent Eco-Kin Dex.
+- For #48, keep Terakla, Nyashaq, Trembala, Lithassa, Dunelurk, Kapsa, Tidarak, Mycotrak, Azeni, and Vumbaki in `03_EcoKin_Dex/Intake` until exact/fuzzy name, species-role, anatomy, ecology, originality, source-image, ownership/provenance, and roster-capacity review passes. The issue contains no image binaries; do not claim asset integration until approved original files and provenance records exist.
+- For #49, EK-065 through EK-097 are visual-wave labels, never permanent IDs. The current corrected registry finds Hammerwake at protected `DEX-099` with `PENDING REVIEW`; preserve that slot and do not infer identity approval. Every other candidate remains `PROPOSAL` even when no exact-name match is found. EK-041 through EK-064 remain `REFERENCE / REDESIGN REQUIRED` unless a separate originality pass approves a rebuilt Echohearts-native identity.
+- Route canon/Dex decisions to `Dlomotion/Echohearts-Rebearth`; web presentation to `echohearts-web`; visual source/provenance work to `Echohearts-Ecokins`; executable UE5.8 code, imported packages, tests, and runtime evidence to `ECHOHEARTS-REBEARTH-BUILD-`; treat the remaining repositories as legacy/support surfaces according to their declared role. Never duplicate authoritative media or runtime code across all repositories.
+- `Dlomotion/ECHOHEARTS-REBEARTH-BUILD-#39` is a **draft pull request**, not an issue. Repository-checkable scope is limited to its scripts, schemas, workflow, empty staging roots, path/provenance safeguards, and offline tests. Fab acquisition, entitlement/license review, first pack import, MetaHuman creation/import, redirector/dependency repair, Editor load, PIE, cook, package, server/client, performance, and platform validation require the actual Windows UE5.8 workstation and matching checkout.
+- Record for every third-party asset: listing URL and immutable product identifier where available, publisher/creator, acquisition date/account context without secrets, license/entitlement evidence location, engine/platform compatibility claim, intended role, imported package roots, dependency/plugin requirements, modification restrictions, redistribution limits, source revision, reviewer, and evidence status. Asset-file presence is never runtime proof.
+- The proposed 62 lineage, 45 dynamic-swap, and 12 frequency-band counts and the Prime/Vector/Apex, Prismatic, Obsidian, DNA Fusion, and Colossal/Anomalous terminology are **CONCEPT / NOT CANON-LOCKED** until reconciled with the current Dex, Essence framework, Growth Rite/Mutation/Shimmer rules, Purity/Corruption model, and approved design vocabulary. Do not generate schemas or runtime enums that make these proposals authoritative.
+- If retained after review, habitat morphology must use stable base identity plus an explicit mutually-exclusive morphology state, typed Essence/interaction references, Vibrance/Density/Harmony/Purity only, deterministic validation, versioned save migration, server authority, Anima-Link consequences, and reversible failure handling. Surface overlays must remain cosmetic unless an approved gameplay contract says otherwise.
+- Implementation order: approve the data contract/schema first; then validators and fixtures; then C++/DataAsset or DataTable integration; then versioned serialization; finally UE5.8 compile, Editor, PIE, networking, save/load/rollback, cook/package, and performance evidence.
+- COBOL and BASIC remain optional isolated legacy utilities for deterministic conversion, validation, or reporting with pinned compilers and tests. They must not own UE gameplay/runtime, Fab import, MetaHuman, rendering, replication, save, packaging, or web production responsibilities.
 
 ## Polyglot engineering and repository synchronization
 Use multiple languages deliberately; do not duplicate authoritative gameplay across languages.
