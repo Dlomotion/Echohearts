@@ -1,45 +1,77 @@
-# Echohearts: Rebearth
+# Echohearts
 
-**Restore the Balance. Rewrite the Future.**
+Independent C++ source and verification repository for **Echohearts: Rebearth / Echohearts: Resonance Arena / Eco-Kin**.
 
-Echohearts: Rebearth is an original cooperative action-RPG and creature-partnership game in development by Into Deep Studios. It takes place on Rebearth, a living planet whose ecosystems and memories respond to the player's choices.
+The canonical game-design and Unreal-development repository remains `Dlomotion/Echohearts-Rebearth`. This repository is a supporting engine-independent C++/verification repository used to harden reusable domain logic and database checks. It is not the executable UE5.8 runtime authority and must not fork gameplay implementation away from `Dlomotion/ECHOHEARTS-REBEARTH-BUILD-`.
 
-## Core direction
+## Current verified source scope
 
-- Real-time third-person action, exploration, survival, restoration, and sanctuary building.
-- Eco-Kin are sentient partners—not collectible inventory or disposable tools.
-- Kindling is a voluntary, trust-based bond between a Frequency Tamer and an Eco-Kin.
-- Players carry a party of eight Eco-Kin and may field up to three active partners.
-- The four canonical gameplay stats are Vibrance, Density, Harmony, and Purity.
-- The current elemental framework contains 12 types.
-- Player decisions change ecosystems, relationships, settlements, and the ending.
+The duplicated C++ domain core currently covers:
 
-## Current development status
+- marketplace listing validation and economy sink calculations
+- explicit rejection of Eco-Kin, Eco-Kin eggs, and sentient partners from commerce
+- player housing/furniture placement validation
+- cross-region recurring event windows
+- deterministic daily-mission selection with anti-friction rules
 
-This repository currently contains a legacy public-facing prototype, not a playable build. The active Unreal Engine 5.8 foundation and project records are being reviewed for canon, source provenance, licensing, security, and repository hygiene before publication.
+The source is under `cpp/` and is intentionally engine-independent until the actual UE5.8 project source is available for integration.
 
-The working project data currently tracks 125 permanent Eco-Kin identities, but those records are not a claim that 125 production-ready creatures, meshes, animations, abilities, or spawnable game assets exist. Runtime compilation, multiplayer behavior, performance, persistence, cooking, packaging, and platform support remain unverified until their raw test evidence is recorded.
+## Build and test
 
-## Canon safeguards
+```bash
+cmake -S cpp -B build -DCMAKE_BUILD_TYPE=Release
+cmake --build build --parallel
+ctest --test-dir build --output-on-failure
+```
 
-- Rebearth is the world and Echohearts Sanctuary is the central restored hub.
-- A.E.G.I.S. is the player's field bracer for survival, scanning, partner commands, and compatible systems.
-- The main campaign remains real-time. Turn-based play is limited to specifically authored simulation or side modes.
-- No outside game code, characters, art, maps, dialogue, or proprietary identity belongs in Echohearts.
-- Reference material does not become canon without originality, rights, anatomy, continuity, and production review.
+## Verify a SQLite database
 
-## Repository notice
+```bash
+./build/echo_verify --database path/to/echohearts.db --level 5
+```
 
-The previous README embedded a full HTML page containing retired names, unsupported feature counts, coercive capture wording, and links to image files that were not present in the repository. That material is being replaced through review rather than treated as current canon.
+Levels range from 1 to 10. Level 5 is the normal starting point; level 10 runs the deepest current read-only verification. See `docs/VERIFICATION.md` for the exact checks and the distinction between Echohearts verification, Git `fsck`, and IBM ELM `repotools -verify`.
 
-Current game-source publication is intentionally paused until the repository's existing license and the project's current rights policy are formally reconciled. Do not treat this repository as evidence that an Unreal build, multiplayer server, beta signup, or production-ready roster is available.
+## Clone
 
-## Project lead
+SSH:
 
-**Creator and Lead Designer:** Donta L. Owens
+```bash
+git clone git@github.com:Dlomotion/Echohearts.git
+```
 
-**Studio:** Into Deep Studios
+HTTPS:
 
-**Home:** South Holland, Illinois
+```bash
+git clone https://github.com/Dlomotion/Echohearts.git
+```
 
-Project status: **pre-alpha / working foundation / not runtime verified**
+`git@github.com:Dlomotion/Echohearts.git` is a repository URL, not an SSH key. Never commit a private key.
+
+## Naming standard
+
+- `EcoKin` in code identifiers.
+- `Eco-Kin` in prose.
+- `Eco-Kin's` only for singular possessive grammar.
+
+## Verification status
+
+This repository can verify the standalone C++ source and SQLite test database through GitHub Actions. It does **not** yet prove UE5.8 compilation, networking, save migration, replication, gameplay performance, or production database correctness because those production artifacts are not present here yet.
+
+© 2026 Into Deep Studios and Donta L. Owens. All rights reserved.
+
+
+## Runtime authority
+
+- Canon/contracts/Dex/publication authority: `Dlomotion/Echohearts-Rebearth`
+- Executable Unreal Engine 5.8 runtime/build/evidence authority: `Dlomotion/ECHOHEARTS-REBEARTH-BUILD-`
+- The project-specific Echohearts compiler/build driver belongs in the BUILD repository at `BuildScripts/EchoheartsCompiler.py`.
+- CMake/g++/Clang/MSVC checks in this repository may validate engine-independent C++ only; they are never UE5.8 runtime verification.
+
+## Canon and provenance
+
+The 125-ID Permanent Dex in `Dlomotion/Echohearts-Rebearth` remains the production identity authority. Its records do not establish that 125 finished meshes, animations, abilities, or playable partners exist. Supporting work preserves Vibrance, Density, Harmony, and Purity and the voluntary Kindling relationship; it must not redefine gameplay or publish new canon here.
+
+The legacy `index.html` is historical prototype material. It does not establish a beta, operational signup service, production roster count, or current gameplay contract. The website belongs in `Dlomotion/echohearts-web`.
+
+The existing `LICENSE` is unchanged. Before importing current game source or art, reconcile its rights and provenance with the owning repositories. This documentation merge does not settle any licensing conflict or establish Unreal compilation, save, networking, AI, animation, or gameplay evidence.
