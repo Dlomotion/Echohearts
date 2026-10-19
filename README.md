@@ -2,7 +2,7 @@
 
 Independent C++ source and verification repository for **Echohearts: Rebearth / Echohearts: Resonance Arena / Eco-Kin**.
 
-The canonical game-design and Unreal-development repository remains `Dlomotion/Echohearts-Rebearth`. This repository is a second source-code/verification track used to duplicate tested domain logic, harden C++ quality checks, and verify development databases without overwriting the main design repository.
+The canonical game-design and Unreal-development repository remains `Dlomotion/Echohearts-Rebearth`. This repository is a supporting engine-independent C++/verification repository used to harden reusable domain logic and database checks. It is not the executable UE5.8 runtime authority and must not fork gameplay implementation away from `Dlomotion/ECHOHEARTS-REBEARTH-BUILD-`.
 
 ## Current verified source scope
 
@@ -59,3 +59,11 @@ git clone https://github.com/Dlomotion/Echohearts.git
 This repository can verify the standalone C++ source and SQLite test database through GitHub Actions. It does **not** yet prove UE5.8 compilation, networking, save migration, replication, gameplay performance, or production database correctness because those production artifacts are not present here yet.
 
 © 2026 Into Deep Studios and Donta L. Owens. All rights reserved.
+
+
+## Runtime authority
+
+- Canon/contracts/Dex/publication authority: `Dlomotion/Echohearts-Rebearth`
+- Executable Unreal Engine 5.8 runtime/build/evidence authority: `Dlomotion/ECHOHEARTS-REBEARTH-BUILD-`
+- The project-specific Echohearts compiler/build driver belongs in the BUILD repository at `BuildScripts/EchoheartsCompiler.py`.
+- CMake/g++/Clang/MSVC checks in this repository may validate engine-independent C++ only; they are never UE5.8 runtime verification.
