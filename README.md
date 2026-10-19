@@ -67,3 +67,11 @@ This repository can verify the standalone C++ source and SQLite test database th
 - Executable Unreal Engine 5.8 runtime/build/evidence authority: `Dlomotion/ECHOHEARTS-REBEARTH-BUILD-`
 - The project-specific Echohearts compiler/build driver belongs in the BUILD repository at `BuildScripts/EchoheartsCompiler.py`.
 - CMake/g++/Clang/MSVC checks in this repository may validate engine-independent C++ only; they are never UE5.8 runtime verification.
+
+## Canon and provenance
+
+The 125-ID Permanent Dex in `Dlomotion/Echohearts-Rebearth` remains the production identity authority. Its records do not establish that 125 finished meshes, animations, abilities, or playable partners exist. Supporting work preserves Vibrance, Density, Harmony, and Purity and the voluntary Kindling relationship; it must not redefine gameplay or publish new canon here.
+
+The legacy `index.html` is historical prototype material. It does not establish a beta, operational signup service, production roster count, or current gameplay contract. The website belongs in `Dlomotion/echohearts-web`.
+
+The existing `LICENSE` is unchanged. Before importing current game source or art, reconcile its rights and provenance with the owning repositories. This documentation merge does not settle any licensing conflict or establish Unreal compilation, save, networking, AI, animation, or gameplay evidence.
